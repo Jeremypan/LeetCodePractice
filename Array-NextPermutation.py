@@ -17,7 +17,7 @@ class Solution:
                 break        
         #2nd step - condition if it cannot find the first number
         if  first_number==float('-inf'):
-            self.to_reverse(nums,0,len(nums)-1) # reverse
+            nums.reverse()
         else:
             first_larger=float("inf")
             #3rd step - find the first number larger than the first_number
@@ -29,14 +29,4 @@ class Solution:
             temp=nums[first_number]
             nums[first_number]=nums[first_larger]
             nums[first_larger]=temp
-            self.to_reverse(nums,first_number+1,len(nums)-1)
-            # nums=nums[:first_number+1]+nums[first_number+1:][::-1]
-            # print(nums)
-            
-    
-    def to_reverse(self,nums,start,end):
-        while start<end:
-            nums[start],nums[end]=nums[end],nums[start]
-            start+=1
-            end-=1
-        return nums
+            nums[first_number+1:]=reversed(nums[first_number+1:])
